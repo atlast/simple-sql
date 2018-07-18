@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="global.css">
+        <link rel="stylesheet" href="connection.css">
+    </head>
+    <body>
+        <div id="app" class="d-flex flex-direction-column h-100">
+            <div class="flex-grow form">
+                <div class="d-flex">
+                    <div class="label">
+                        Name 
+                    </div>
+                    <input v-model="database.name" type="text" class="flex-grow" />
+                </div>
+                <div class="d-flex">
+                    <div class="label">
+                        Host 
+                    </div>
+                    <input v-model="database.host" type="text" class="flex-grow" />
+                </div>
+                <div class="d-flex">
+                    <div class="label">
+                        Port 
+                    </div>
+                    <input v-model="database.port" type="text" class="flex-grow" />
+                </div>
+                <div class="d-flex">
+                    <div class="label">
+                        Username 
+                    </div>
+                    <input v-model="database.username" type="text" class="flex-grow" />
+                </div>
+                <div class="d-flex">
+                    <div class="label">
+                        Password 
+                    </div>
+                    <input v-model="database.password" type="password" class="flex-grow" />
+                </div>
+                <div class="d-flex">
+                    <div class="label">
+                        Database 
+                    </div>
+                    <input v-model="database.database" type="text" class="flex-grow" />
+                </div>
+            </div>
+
+            <div class="d-flex">
+                <div class="flex-grow">
+                    <button v-if="isEditMode" class="secondary" v-on:click="remove()">Remove</button>
+                </div>
+                <button class="secondary" v-on:click="cancel()">Cancel</button>
+                <button class="ml-1" v-on:click="test()" v-bind:class="{ secondary: tested }">Test</button>
+                <button class="ml-1" v-on:click="save()" v-bind:class="{ secondary: !tested }">Save</button>
+            </div>
+        </div>
+
+        <script>require('../dist/connection.js')</script>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="global.css">
+        <link rel="stylesheet" href="query.css">
+    </head>
+    <body>
+        <div id="app" v-bind:class="{ 'is-mouse-down': isMouseDown }" class="d-flex" v-on:mousemove="onMouseMove" v-on:mouseup="onMouseUp">
+            <div class="table-list d-flex flex-direction-column" v-bind:style="{width: tableWidth + 'px'}">
+                <div class="label">Tables</div>
+                <div class="tables">
+                    <!-- TODO Style scrollbar -->
+                    <div v-for="table in tables" v-on:click="selectTable(table)" v-bind:class="{ 'is-selected': table === selectedTable }">
+                        {{ table }}
+                    </div>
+                </div>
+            </div>
+            <div class="grab" v-on:mousedown="onMouseDown">
+                <div class="vertical-bar"></div>
+            </div>
+            <div class="flex-grow">
+                <div class="tabs d-flex">
+                    <div v-on:click="selectedTab = 'data'" v-bind:class="{ 'is-selected': selectedTab === 'data' }">Data</div>
+                    <div v-on:click="selectedTab = 'details'" v-bind:class="{ 'is-selected': selectedTab === 'details' }">Details</div>
+                    <div v-on:click="selectedTab = 'query'" v-bind:class="{ 'is-selected': selectedTab === 'query' }">Query</div>
+                </div>
+
+                <div class="data" v-if="selectedTab === 'data'">
+                    DATA
+                </div>
+
+                <div class="details" v-if="selectedTab === 'details'">
+                    DETAILS
+                </div>
+
+                <div class="query" v-if="selectedTab === 'query'">
+                    QUERY
+                </div>
+            </div>
+        </div>
+
+        <script>require('../dist/query.js')</script>
+    </body>
+</html>

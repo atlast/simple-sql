@@ -1,0 +1,88 @@
+#app {
+    height: 100%;
+    padding: 0;
+}
+
+#app.is-mouse-down {
+    cursor: col-resize;
+    user-select: none;
+}
+
+#app > div {
+    overflow: hidden;
+}
+
+.grab {
+    cursor: col-resize;
+}
+
+.tables {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.label {
+    border-bottom: 1px solid #393939;
+}
+
+.label,
+.tables > div {
+    padding: 5px 8px;
+}
+
+.tables > div {
+    cursor: pointer;
+    background: #404040;
+}
+
+
+.tables > div:hover {
+    background: #494949;
+}
+
+.tables > div.is-selected {
+    background: #8FA876;
+    color: #fff;
+}
+
+.vertical-bar {
+    border-left: 2px solid #393939;
+    border-right: 2px solid #222;
+    border-top: none;
+    border-bottom: none;
+    height: 100%;
+}
+
+.tabs {
+    padding-top: 5px;
+    color: #999;
+}
+
+.tabs > div {
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+.tabs > div.is-selected,
+.tabs > div:hover {
+    color: #ccc;
+}
+
+.tabs > div.is-selected {
+    border-top: 1px solid #222;
+    border-right: 1px solid #222;
+    border-left: 1px solid #222;
+    border-bottom: 1px solid #333;
+    background: #333;
+    margin-bottom: -1px;
+}
+
+.data,
+.details,
+.query {
+    background: #333;
+    border-top: 1px solid #222;
+    width: 100%;
+    height: 100%;
+    padding: 8px;
+}

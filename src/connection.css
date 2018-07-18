@@ -1,0 +1,18 @@
+.label {
+    font-size: 12px;
+    min-width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    text-align: right;
+    color: #aaaaaa;
+    margin-left: auto;
+}
+
+.form {
+    margin: -10px -20px;
+}
+
+.form > * {
+    margin: 10px 20px;
+}

@@ -1,0 +1,105 @@
+#search-bar {
+    height: 35px;
+    margin: 0 -15px;
+}
+
+#search-bar input {
+    padding-left: 30px;
+}
+
+#search-bar svg {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    top: 9px;
+    left: 10px;
+    fill: #BBBBBB;
+}
+
+#search-bar svg.clear-filter {
+    right: 9px;
+    left: auto;
+    cursor: pointer;
+}
+
+#search-bar > * {
+    margin: 0 15px;
+}
+
+#db-box {
+    margin: 10px -10px -20px -10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#db-box svg {
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+
+#db-box svg * {
+    fill: #BBBBBB;
+}
+
+#db-box > div {
+    background-color: #3D3D3D;
+    border: 1px solid #222;
+    border-radius: 3px;
+    margin: 10px;
+    width: 23%;
+    min-width: 200px;
+}
+
+.database > div {
+    padding: 8px;
+}
+
+.database .logo {
+    display: flex;
+    align-items: center;
+    margin-right: 8px;
+}
+
+.database .logo img {
+    width: 32px;
+    height: 32px;
+}
+
+.database .info {
+    overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+    font-size: 12px;
+}
+
+.database .info .name {
+    margin-top: 1px;
+}
+
+.database .info .host {
+    margin-top: 1px;
+    width: 100%;
+    overflow: hidden;
+    color: #aaa;
+	text-overflow: ellipsis;
+}
+
+.no-databases {
+    text-align: center;
+    margin-top: 100px; /* TODO convert this to a flex container and center vertically */
+    color: #888;
+}
+
+.connect {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    background-color: #555;
+}
+
+.connect:hover {
+    opacity: 1;
+    border-color: #8FA876;
+
+}
