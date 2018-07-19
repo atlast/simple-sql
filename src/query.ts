@@ -12,13 +12,28 @@ new Vue({
         selectedTable: null,
         isMouseDown: false,
         tableWidth: 200,
-        database: { },
-        tables: []
+        database: {},
+        tables: [],
+
+        data: [],
+        fields: [],
+        filter: '',
     },
 
     methods: {
+        updateData() {
+            client.query({
+                text: `SELECT * FROM ${this.selectedTable} LIMIT 10`,
+                rowMode: 'array',
+            }).then((results) => {
+                this.fields = results.fields;
+                this.data = results.rows;
+            });
+        },
+
         selectTable(table:string) {
             this.selectedTable = table;
+            this.updateData();
         },
        
         onSetData(data:any) {
