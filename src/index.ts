@@ -4,10 +4,10 @@ import { remote } from 'electron';
 import { Database } from './lib/database';
 
 const defaultWindow = {
-    height: 370,
+    height: 400,
     width: 400,
-    modal: true,
-    resizable: false,
+    // modal: true,
+    // resizable: false,
 }
 
 
@@ -60,10 +60,11 @@ new Vue({
         connect(database: Database) {
             this.$openWindow({
                 window: {
-                    height: 600,
-                    width: 800,
+                    height: 680,
+                    width: 1000,
                     title: database.name
                 },
+                showDevTools: true,
                 loadFile: path.join(__dirname, '../src/query.html'),
                 data: {
                     database

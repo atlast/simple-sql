@@ -50,11 +50,13 @@ Vue.prototype.$openWindow = (options: WindowOptions) => {
 
 Vue.mixin({
     beforeCreate() {
-        parent = remote.getCurrentWindow();
-        if (app !== null) {
-            throw 'Vue app already declared. This will probably cause issues';
-        } else {
-            app = this;
+        if (this.constructor.name === 'Vue') {
+            parent = remote.getCurrentWindow();
+            if (app !== null) {
+                throw 'Vue app already declared. This will probably cause issues';
+            } else {
+                app = this;
+            }
         }
     }
 });

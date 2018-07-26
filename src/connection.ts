@@ -1,6 +1,7 @@
 import { Vue } from './lib/simple-vue';
 import { BrowserWindow, remote, ipcRenderer } from 'electron';
-import { Client } from 'pg';
+import { testConnection } from './lib/database';
+import Knex from 'knex';
 const keytar = require('keytar');
 
 
@@ -19,6 +20,7 @@ const app = new Vue({
             username: '',
             password: '',
             database: '',
+            type: ''
         },
     },
     methods: {
@@ -48,22 +50,24 @@ const app = new Vue({
         },
 
         test() {
-            const client = new Client({
-                user: this.database.username,
-                host: this.database.host,
-                database: this.database.database,
-                password: this.database.password,
-                port: this.database.port,
-            });
-
-            client.connect((err) => {
-                if (err) {
-                    this.tested = false;
-                    remote.dialog.showErrorBox('Unable to connect', err.message);
-                } else {
-                    this.tested = true;
+            const client = Knex({
+                client: this.database.type,
+                connection: {
+                    host: this.database.host,
+                    port: this.database.port, 
+                    user: this.database.username,
+                    password: this.database.password,
+                    database: this.database.database
                 }
             });
+
+            testConnection(client)
+                .then(() => {
+                    this.tested = true;
+                }, (error) => {
+                    this.tested = false;
+                    remote.dialog.showErrorBox('Unable to connect', error.message);
+                });
         },
 
         onSetData(data:any) {

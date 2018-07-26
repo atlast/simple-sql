@@ -16,6 +16,19 @@
                 </div>
                 <div class="d-flex">
                     <div class="label">
+                        Database 
+                    </div>
+                    <div class="select-container flex-grow">
+                        <select v-model="database.type">
+                            <option value='mysql2'>MySQL</option>
+                            <option value='mssql'>MSSQL</option>
+                            <option value='oracle'>Oracle</option>
+                            <option value='pg'>PostgreSQL</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="label">
                         Host 
                     </div>
                     <input v-model="database.host" type="text" class="flex-grow" />

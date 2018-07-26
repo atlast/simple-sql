@@ -1,65 +1,55 @@
 import { Vue } from './lib/simple-vue';
-import { Client } from 'pg';
+import { listTables } from './lib/database';
+import { remote } from 'electron';
+import Knex from 'knex';
 const keytar = require('keytar');
-
-let client:Client = null;
 
 new Vue({
     el: '#app',
 
     data: {
-        selectedTab: 'data',
+        client: null,
+
         selectedTable: null,
+        selectedTab: 'data',
         isMouseDown: false,
         tableWidth: 200,
         database: {},
         tables: [],
-
-        data: [],
-        fields: [],
-        filter: '',
     },
 
     methods: {
-        updateData() {
-            client.query({
-                text: `SELECT * FROM ${this.selectedTable} LIMIT 10`,
-                rowMode: 'array',
-            }).then((results) => {
-                this.fields = results.fields;
-                this.data = results.rows;
-            });
-        },
-
-        selectTable(table:string) {
-            this.selectedTable = table;
-            this.updateData();
-        },
-       
         onSetData(data:any) {
             this.database = data.database;
             keytar.getPassword('simple-sql', this.database.uuid)
                 .then((password:string) => {
                     this.database.password = password;
 
-                    client = new Client({
-                        user: this.database.username,
-                        host: this.database.host,
-                        database: this.database.database,
-                        password: this.database.password,
-                        port: this.database.port,
+                    this.client = Knex({
+                        client: this.database.type,
+                        connection: {
+                            host: this.database.host,
+                            port: this.database.port, 
+                            user: this.database.username,
+                            password: this.database.password,
+                            database: this.database.database
+                        }
                     });
-
-                    client.connect();
         
-                    client.query("SELECT relname FROM pg_class WHERE relkind='r' AND relname !~ '^(pg_|sql_)' ORDER BY relname")
-                        .then((results) => {
-                            this.tables = results.rows.map((row) => row.relname);
+                    listTables(this.client)
+                        .then((tables) => {
+                            this.tables = tables;
                             if (this.tables.length > 0) {
                                 this.selectTable(this.tables[0]);
                             }
+                        }, (error) => {
+                            remote.dialog.showErrorBox('Unable to get the tables from the database', error.message);
                         });
-                });            
+                });
+        },
+    
+        selectTable(table:string) {
+            this.selectedTable = table;
         },
 
         onMouseDown() {
@@ -74,10 +64,6 @@ new Vue({
             if (this.isMouseDown) {
                 this.tableWidth = event.clientX - 5;
             }
-        },
-
-        onClose() {
-            client.end();
         }
     }
 });
