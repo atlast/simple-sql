@@ -63,6 +63,7 @@ function createWindow(options: WindowOptions) {
     let win = new BrowserWindow({
         height: 600,
         width: 1200,
+        icon: './assets/images/icon/icon.png',
         ...options.window
     });
 

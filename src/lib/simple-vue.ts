@@ -16,6 +16,7 @@ Vue.prototype.$openWindow = (options: WindowOptions) => {
     let child = new remote.BrowserWindow({
         height: 600,
         width: 1200,
+        icon: './assets/images/icon/icon.png',
         ...options.window
     });
 

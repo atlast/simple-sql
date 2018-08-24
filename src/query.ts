@@ -38,6 +38,7 @@ new Vue({
         
                     listTables(this.client)
                         .then((tables) => {
+                            tables.sort();
                             this.tables = tables;
                             if (this.tables.length > 0) {
                                 this.selectTable(this.tables[0]);

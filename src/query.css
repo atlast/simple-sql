@@ -93,7 +93,7 @@
 }
 
 .filter {
-    height: 35px;
+    height: 48px;
     padding: 8px;
 }
 
@@ -109,12 +109,11 @@
 
 .data-table {
     width: 100%;
-    margin-top: 5px;
     overflow: auto;
 }
 
 table {
-    margin: 8px;
+    margin: 0 8px 8px 8px;
     border-collapse: collapse;
 }
 
@@ -131,7 +130,7 @@ td {
 th {
     background: #3D3D3D;
     border: 1px solid #292929;
-    padding: 5px 8px;
+    padding: 5px 0 5px 8px;
     color: #BBBBBB;
     text-align: left;
     cursor: pointer;
@@ -142,7 +141,7 @@ th {
     width: 17px;
     height: 25px;
     position: absolute;
-    right: 0px;
+    right: 8px;
     padding-left: 3px;
     top: 0;
     padding-top: 10px;
@@ -163,4 +162,42 @@ th {
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;   
     border-top: 5px solid #BBBBBB;    
+}
+
+#search-bar {
+    height: 35px;
+    position: relative;
+}
+
+#search-bar input {
+    padding-left: 30px;
+}
+
+#search-bar svg {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    top: 9px;
+    left: 10px;
+    fill: #BBBBBB;
+}
+
+#search-bar svg.clear-filter {
+    right: 9px;
+    left: auto;
+    cursor: pointer;
+}
+
+.search button {
+    margin-left: 10px;
+}
+
+.resizer {
+    cursor: ew-resize;
+    position: absolute;
+    right: 0px;
+    top: 5px;
+    padding: 0px 5px 0px 4px;
+    background: #3D3D3D;
+    color: #888;
 }

@@ -26,7 +26,7 @@
                     <div v-on:click="selectedTab = 'query'" v-bind:class="{ 'is-selected': selectedTab === 'query' }">Query</div>
                 </div>
 
-                <data-tab v-bind:client="client" v-bind:selected-table="selectedTable" class="data d-flex flex-direction-column" v-if="selectedTab === 'data'">
+                <data-tab v-bind:class="{ 'hidden': selectedTab !== 'data' }" v-bind:client="client" v-bind:selected-table="selectedTable" class="data d-flex flex-direction-column">
                 </data-tab>
 
                 <div class="details" v-if="selectedTab === 'details'">
@@ -44,7 +44,8 @@
             </div>
         </div>
 
-        <script>require('../dist/data-tab.js')</script>
+        <script>require('../dist/components/data-tab.js')</script>
+        <script>require('../dist/components/data-table.js')</script>
         <script>require('../dist/query.js')</script>
     </body>
 </html>

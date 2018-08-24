@@ -50,6 +50,16 @@ button:active {
     background: rgb(101, 119, 83);
 }
 
+button:disabled {
+    color: #ccc;
+    background: #999;
+    cursor: default;
+}
+
+button:disabled:hover {
+    opacity: 1;
+}
+
 button.secondary {
     color: #ccc;
     background: #393939;
@@ -208,3 +218,12 @@ html {
 ::-webkit-scrollbar-thumb { height: 50px; background-color: #8FA876; }
 ::-webkit-scrollbar-corner { background-color: #8FA876;}
 ::-webkit-resizer { background-color: #8FA876;}
+
+.hidden {
+    display: none;
+}
+
+.tabs,
+th {
+    user-select: none;
+}

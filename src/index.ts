@@ -64,7 +64,6 @@ new Vue({
                     width: 1000,
                     title: database.name
                 },
-                showDevTools: true,
                 loadFile: path.join(__dirname, '../src/query.html'),
                 data: {
                     database

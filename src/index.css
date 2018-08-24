@@ -30,7 +30,6 @@
     margin: 10px -10px -20px -10px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
 }
 
 #db-box svg {
