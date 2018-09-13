@@ -87,6 +87,7 @@ a:hover {
     display: block;
 }
 
+textarea,
 input[type=text], input[type=password] {
     display: inline-block;
     color: white;
@@ -148,6 +149,10 @@ input[type=password]:focus {
     color: #BBBBBB;
 }
 
+.text-right {
+    text-align: right;
+}
+
 .d-flex {
     display: flex;
 }
@@ -170,6 +175,10 @@ input[type=password]:focus {
 
 #app {
     padding: 20px;
+}
+
+.pad-small {
+    padding: 8px;
 }
 
 .flex-grow {

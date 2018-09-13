@@ -87,6 +87,7 @@
     height: 100%;
 }
 
+.query,
 .data {
     width: 0;
     min-width: 100%;
@@ -113,6 +114,7 @@
 }
 
 table {
+    min-width: 100%;
     margin: 0 8px 8px 8px;
     border-collapse: collapse;
 }
@@ -135,6 +137,10 @@ th {
     text-align: left;
     cursor: pointer;
     overflow: hidden;
+}
+
+th.no-sort {
+    cursor: default;
 }
 
 .arrow {

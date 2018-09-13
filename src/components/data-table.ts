@@ -9,7 +9,7 @@ interface Field {
 const template = `
 <table v-on:mousemove="onMouseMove" v-on:mouseup="onMouseUp"  v-on:mousedown="onGlobalMouseDown">
     <tr class="fields">
-        <th class="pos-relative" v-for="field in fields" v-on:click="onSortColumn(field.name)" v-bind:style="{'min-width': field.width + 'px', 'max-width': field.width + 'px'}">
+        <th v-bind:class="{ 'no-sort': !canSort }" class="pos-relative" v-for="field in fields" v-on:click="onSortColumn(field.name)" v-bind:style="{'min-width': field.width + 'px', 'max-width': field.width + 'px'}">
             {{ field.name }}
             <div class="arrow" v-if="field.name === sortColumn">
                 <div v-bind:class="{ asc: sortDirection === 'asc', desc: sortDirection === 'desc' }">
@@ -28,9 +28,15 @@ const template = `
 `;
 
 Vue.component('data-table', {
-    props: [
-        'rows'
-    ],
+    props: {
+        rows: {
+            type: Array
+        },
+        canSort: {
+            type: Boolean,
+            default: true
+        }
+    },
 
     watch: {
         rows: function(rows) {
@@ -56,7 +62,7 @@ Vue.component('data-table', {
 
     methods: {
         onSortColumn(sortColumn: string) {
-            if (this.didDrag) {
+            if (this.didDrag || !this.canSort) {
                 return;
             }
 

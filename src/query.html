@@ -29,22 +29,17 @@
                 <data-tab v-bind:class="{ 'hidden': selectedTab !== 'data' }" v-bind:client="client" v-bind:selected-table="selectedTable" class="data d-flex flex-direction-column">
                 </data-tab>
 
-                <div class="details" v-if="selectedTab === 'details'">
-                    DETAILS... coming soon.
-                </div>
+                <details-tab v-bind:class="{ 'hidden': selectedTab !== 'details' }" v-bind:client="client" v-bind:selected-table="selectedTable" class="details d-flex flex-direction-column">
+                </details-tab>
 
-                <div class="query d-flex flex-direction-column" v-if="selectedTab === 'query'">
-                    <div>
-                        <textarea></textarea>
-                    </div>
-                    <div>
-                        TABLE TABLE
-                    </div>
-                </div>
+                <query-tab v-bind:class="{ 'hidden': selectedTab !== 'query' }" v-bind:client="client" class="query d-flex flex-direction-column">
+                </query-tab>
             </div>
         </div>
 
         <script>require('../dist/components/data-tab.js')</script>
+        <script>require('../dist/components/details-tab.js')</script>
+        <script>require('../dist/components/query-tab.js')</script>
         <script>require('../dist/components/data-table.js')</script>
         <script>require('../dist/query.js')</script>
     </body>
